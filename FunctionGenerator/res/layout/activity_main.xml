@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/buttonExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_alignLeft="@+id/buttonSineWave"
+        android:layout_marginBottom="22dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:onClick="exitApplication"
+        android:text="Exit" />
+
+    <Button
+        android:id="@+id/buttonSquareWave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonExit"
+        android:layout_alignLeft="@+id/buttonExit"
+        android:layout_alignRight="@+id/buttonSineWave"
+        android:onClick="startSquareWaveGeneration"
+        android:text="SquareWave" />
+
+    <EditText
+        android:id="@+id/editTextFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonSineWave"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp"
+        android:ems="10"
+        android:inputType="numberDecimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/buttonSineWave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonSquareWave"
+        android:layout_alignLeft="@+id/editTextFrequency"
+        android:layout_alignRight="@+id/editTextFrequency"
+        android:onClick="startSineWaveGeneration"
+        android:text="SineWave" />
+
+</RelativeLayout>
