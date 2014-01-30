@@ -1,0 +1,148 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <SeekBar
+        android:id="@+id/seekBarFreq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="133dp"
+        android:max="100" />
+
+    <EditText
+        android:id="@+id/editTextLowerFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editTextLowerFreq"
+        android:layout_alignParentLeft="true"
+        android:text="Lower Freq"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editTextHigherFreq"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="Higher Freq"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/editTextHigherFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextLowerFreq"
+        android:layout_below="@+id/editTextLowerFreq"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/textViewLowerFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewTitle"
+        android:layout_alignLeft="@+id/seekBarFreq"
+        android:text="100"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewHighFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textViewTitle"
+        android:layout_alignRight="@+id/seekBarFreq"
+        android:text="1000"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="FrequencyRange" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="18dp"
+        android:text="Current Freq"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewCurrFreq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView02"
+        android:layout_alignBottom="@+id/TextView02"
+        android:layout_alignLeft="@+id/textViewTitle"
+        android:text="0" />
+
+    <Button
+        android:id="@+id/buttonStartStopToggle"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textViewHighFreq"
+        android:onClick="onClickButtonStartStopToggle"
+        android:text="Start" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupWaveType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewLowerFreq"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_marginTop="28dp" >
+
+        <RadioButton
+            android:id="@+id/radioSineWave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="SineWave" 
+            android:onClick="onClickRadioGroupWaveType" />
+
+        <RadioButton
+            android:id="@+id/radioSquareWave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SquareWave" 
+            android:onClick="onClickRadioGroupWaveType" />
+
+        <RadioButton
+            android:id="@+id/radioTriangularWave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TriangularWave"
+            android:onClick="onClickRadioGroupWaveType" />
+    </RadioGroup>
+
+</RelativeLayout>
