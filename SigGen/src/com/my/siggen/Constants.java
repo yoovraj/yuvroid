@@ -18,5 +18,19 @@ public abstract class Constants {
 		public static final String WAVE_TYPE    = "WAVE.TYPE";
 		public static final int SINE_0          = 0;
 		public static final int SQUARE_1        = 1;
+		public static final String PLAYSTATUS   = "PLAYSTATUS";
+	}
+	
+	/**
+	 * Characteristic of wave
+	 * @author yoovraj.shinde
+	 *
+	 */
+	public abstract class WAVE {
+	    public static final String DURATION     = "DURATION";
+        public static final String SAMPLE_RATE  = "SAMPLE_RATE";
+        public static final String NUM_SAMPLES  = "NUM_SAMPLES";
+        public static final String FREQ_OF_TONE = "FREQ_OF_TONE";
+        public static final String SAMPLE       = "SAMPLE";
 	}
 }

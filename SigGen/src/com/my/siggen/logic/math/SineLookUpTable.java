@@ -2,9 +2,9 @@ package com.my.siggen.logic.math;
 
 public class SineLookUpTable {
 
-	static int precision = 4;
+	private static int precision = 4;
 	
-	static int multiplyingFactor = (int) Math.pow(10, precision);
+	private static int multiplyingFactor = (int) Math.pow(10, precision);
 	static int arraySize = (int) (2*Math.PI*multiplyingFactor);
 	static double[] value = new double[arraySize];
 	
@@ -13,6 +13,7 @@ public class SineLookUpTable {
 		System.out.println("---GENERATING SINE TABLE ---");
 		for (int i=0; i < arraySize; i++) {
 			value[i] = Math.sin(i*1.0/multiplyingFactor);
+			System.out.println(i*1.0/multiplyingFactor + " = " + value[i]);
 		}
 		System.out.println("---FINISHED SINE TABLE ---");
 	}

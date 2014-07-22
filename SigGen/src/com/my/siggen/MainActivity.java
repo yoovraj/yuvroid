@@ -1,7 +1,6 @@
 package com.my.siggen;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.os.Bundle;
@@ -11,12 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
-import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.my.siggen.logic.AudioService;
-import com.my.siggen.logic.AudioThreadIntentService;
+import com.my.siggen.async.AudioAsyncTask;
 
 public class MainActivity extends Activity {
 
@@ -31,16 +29,16 @@ public class MainActivity extends Activity {
 	public EditText editTextHigherFreq = null;
 
 	public Button buttonStartStopToggle = null;
-	Intent intentAudioService = null;
-	Intent intenAudioThreadIntentService = null;
+//	Intent intentAudioService = null;
+//	Intent intenAudioThreadIntentService = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
 		// Initialise
-		intentAudioService =  new Intent(this, AudioService.class);
-		intenAudioThreadIntentService = new Intent(this, AudioThreadIntentService.class);
+//		intentAudioService =  new Intent(this, AudioService.class);
+//		intenAudioThreadIntentService = new Intent(this, AudioThreadIntentService.class);
 		
 		textViewLowFreq = (TextView) this.findViewById(R.id.textViewLowerFreq);
 		textViewLowFreq.setText(String.valueOf(Constants.DEFAULT_LOWER_FREQ));
@@ -108,22 +106,19 @@ public class MainActivity extends Activity {
 	
 	public void onClickButtonStartStopToggle(View v) {
 		System.out.println("Clicked Button " + startStopToggleStatus);
-		startService(intenAudioThreadIntentService);
 		startStopToggleStatus = !startStopToggleStatus;
+		
 		if (startStopToggleStatus == Constants.StartStopToggleButton.START) {
+	        GlobalVar.getInstance().save(Constants.VARIABLES_.PLAYSTATUS, Boolean.TRUE);
+            new AudioAsyncTask().execute();
 			buttonStartStopToggle.setText(Constants.StartStopToggleButton.STOP_STRING);
 		} else if (startStopToggleStatus == Constants.StartStopToggleButton.STOP) {
+	        GlobalVar.getInstance().save(Constants.VARIABLES_.PLAYSTATUS, Boolean.FALSE);
 			buttonStartStopToggle.setText(Constants.StartStopToggleButton.START_STRING);
 		} else {
 			buttonStartStopToggle.setText(Constants.StartStopToggleButton.INVALID_STRING);
 		}
 		
-		AudioService.AUDIOSERVICE_STOP = startStopToggleStatus;
-		if (startStopToggleStatus == Constants.StartStopToggleButton.START) {
-			startService(intentAudioService);
-		} else if (startStopToggleStatus == Constants.StartStopToggleButton.STOP) {
-			stopService(intentAudioService);
-		}
 		stopLoop = startStopToggleStatus;
 		System.out.println("changed " + startStopToggleStatus);
 	}
